@@ -1,6 +1,6 @@
 from Pages.Base_Page import BasePage
-from locators.sbis_ru.download import DownloadPageLocators as download
-from locators.sbis_ru.main import MainPageLocators as main
+from locators.sbis_ru.download import DownloadPageLocators as DLlocators
+from locators.sbis_ru.main import MainPageLocators as locators
 
 
 
@@ -8,11 +8,12 @@ class DownloadPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
+        self.url = 'https://sbis.ru/download'
 
     def sbis_download_and_size_check(self): # Разбить на простые функции
-        self.go_to_url(self.find_element(main.footer_download_sbis).get_attribute('href'))
-        self.action__move_and_click(self.find_element(download.sbis_plagin_category))
-        download_button = self.find_element(download.sbis_download_link)
+        self.go_to_url(self.find_element(locators.Footer.footer_download_sbis).get_attribute('href'))
+        self.action__move_and_click(self.find_element(DLlocators.Controls.sbis_plagin_category))
+        download_button = self.find_element(DLlocators.Downloads.sbis_download_link)
         download_link = download_button.get_attribute('href')
         download_size = download_button.text.split('Exe ')[-1].replace(')', '')
         file_name = self.file_name_from_url(download_link)
