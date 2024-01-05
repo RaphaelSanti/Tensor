@@ -12,17 +12,6 @@ class DownloadPage(BasePage):
         super().__init__(driver)
         self.url = 'https://sbis.ru/download'
 
-    # def sbis_download_and_size_check(self): # Разбить на простые функции
-    #     self.go_to_url(self.find_element(locators.Footer.footer_download_sbis).get_attribute('href'))
-    #     self.action__move_and_click(self.find_element(DLlocators.Controls.sbis_plagin_category))
-    #     find_download_button = self.find_element(DLlocators.Downloads.sbis_download_link)
-    #     download_link = find_download_button.get_attribute('href')
-    #     get_download_size = find_download_button.text.split('Exe ')[-1].replace(')', '')
-    #     get_download_file_name = self.file_name_from_url(download_link)
-    #     self.file_download(download_link, get_download_file_name)
-    #     downloaded_file_size = self.get_file_size(get_download_file_name)
-    #     assert downloaded_file_size == get_download_size, f"Скачанный файл весит: {downloaded_file_size}, а файл по сссылке: {get_download_size}"
-
     @allure.step('Кликаем "Скачать СБИС" в Footer')
     def open_sbis_download(self):
         self.go_to_url(self.find_element(locators.Footer.footer_download_sbis).get_attribute('href'))
