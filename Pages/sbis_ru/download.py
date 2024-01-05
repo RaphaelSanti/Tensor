@@ -37,8 +37,8 @@ class DownloadPage(BasePage):
         return self.file_name_from_url(DownloadPage.get_link_from_download_button(self))
 
     @allure.step('Скачиваем файл')
-    def download_file(self):
-        self.file_download(DownloadPage.get_link_from_download_button(self), DownloadPage.get_download_file_name(self))
+    def download_plugin(self):
+        self.download_file(DownloadPage.get_link_from_download_button(self), DownloadPage.get_download_file_name(self))
 
     @allure.step('Получаем размер скачанного файла')
     def downloaded_file_size(self):
@@ -48,3 +48,7 @@ class DownloadPage(BasePage):
     def check_file_size(self):
         assert DownloadPage.downloaded_file_size(self) == DownloadPage.get_download_size(self),\
             f"Скачанный файл весит: {DownloadPage.downloaded_file_size(self)}, а файл по сссылке: {DownloadPage.get_download_size(self)}"
+
+    @allure.step('Проверяем скачался ли файл')
+    def downloaded_plugin_check(self):
+        assert DownloadPage.downloaded_file_check(self, DownloadPage.get_download_file_name(self))

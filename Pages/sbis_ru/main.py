@@ -10,7 +10,7 @@ class MainPage(BasePage):
         super().__init__(driver)
         self.url = "https://sbis.ru/"
 
-    @allure.step('Открыть https://sbis.ru/')
+    @allure.step('Открываем https://sbis.ru/')
     def open_sbisru(self):
         self.go_to_url(self.url)
 

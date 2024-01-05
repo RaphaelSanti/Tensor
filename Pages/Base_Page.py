@@ -45,7 +45,7 @@ class BasePage:
     def create_new_tab(self):
         self.driver.switch_to.new_window('tab')
 
-    def file_download(self, url, file_name):
+    def download_file(self, url, file_name):
         r = requests.get(url, allow_redirects=True)
         open(file_name, 'wb').write(r.content)
 
@@ -69,3 +69,7 @@ class BasePage:
         elif n == 3: measure = 'ГБ'
         elif n == 4: measure = 'ТБ'
         return f"{file_size} {measure}"
+
+    def downloaded_file_check(self, file_name):
+        path = os.getcwd()
+        return os.path.isfile(path + '/' + file_name)
