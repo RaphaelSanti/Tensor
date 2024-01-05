@@ -7,9 +7,10 @@ from time import sleep
 import allure
 
 
+@allure.suite('Первый сценарий')
 def test_one(browser):
 
-    # 1) Перейти на https://sbis.ru/ в раздел "Контакты"
+
     test_1 = SBIS_Main_Page(browser)
     test_1.open_sbisru()
     test_1.main_page__contacts_button__click()

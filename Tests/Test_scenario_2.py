@@ -2,8 +2,10 @@ from Pages.sbis_ru.main import MainPage as Page
 from Pages.sbis_ru.contacts import  ContactsPage as CTPage
 from conftest import browser
 from time import sleep
+import allure
 
 
+@allure.suite('Второй сценарий')
 def test_two(browser):
 
     # 1) Перейти на https://sbis.ru/ в раздел "Контакты"
